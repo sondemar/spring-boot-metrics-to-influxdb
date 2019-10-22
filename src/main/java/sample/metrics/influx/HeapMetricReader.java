@@ -7,10 +7,13 @@ import org.springframework.stereotype.Component;
 
 import java.lang.management.ManagementFactory;
 import java.lang.management.MemoryMXBean;
-import java.lang.management.MemoryUsage;
 
+/**
+ * Reader of the memory usage metrics.
+ *
+ * @author Mariusz Sondecki
+ */
 @Component
-// http://localhost:8080/actuator/metrics/heap.committed.mb
 public class HeapMetricReader {
 
     private static final String METRIC_NAME = "heap";
