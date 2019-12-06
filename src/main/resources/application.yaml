@@ -11,4 +11,7 @@ management:
         prefixes:
           custom: custom
           heap: heap
-        uri: http://localhost:8086
+        uri: http://influx:8086
+        step: 10s
+logging:
+  level.io.micrometer.influx.InfluxMeterRegistry: debug

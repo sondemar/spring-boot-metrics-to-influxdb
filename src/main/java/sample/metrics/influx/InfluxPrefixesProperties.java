@@ -7,6 +7,8 @@ import java.util.Map;
 
 /**
  * {@link ConfigurationProperties} for configuring Influx metrics prefixes.
+ *
+ * @author Mariusz Sondecki
  */
 @ConfigurationProperties(prefix = "management.metrics.export.influx")
 public class InfluxPrefixesProperties {

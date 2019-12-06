@@ -1,0 +1,27 @@
+version: '3.7'
+services:
+  influx:
+    image: influxdb:latest
+    ports:
+      - "8086:8086"
+    restart: always
+# unsupported with version 3
+#    healthcheck:
+#      test: ["CMD", "influx", "-execute", "'SHOW DATABASES'"]
+#      interval: 1s
+#      timeout: 3s
+#      retries: 30
+
+  app-server:
+    build:
+      context: .
+      dockerfile: Dockerfile_debug
+    restart: always
+    ports:
+      - "8080:8080"
+      - "5005:5005"
+    depends_on:
+      - influx
+# unsupported with version 3
+#        condition: service_healthy
+    command: java -Xdebug -Xrunjdwp:transport=dt_socket,address=5005,server=y,suspend=n -jar spring-boot-metrics-to-influxdb-0.0.1-SNAPSHOT.jar

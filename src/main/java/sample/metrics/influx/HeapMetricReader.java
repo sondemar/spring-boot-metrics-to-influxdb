@@ -2,7 +2,6 @@ package sample.metrics.influx;
 
 import io.micrometer.core.instrument.Gauge;
 import io.micrometer.core.instrument.MeterRegistry;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.lang.management.ManagementFactory;
@@ -23,7 +22,6 @@ public class HeapMetricReader {
     private static final String HEAP_COMMITTED_MB = ".committed.mb";
     private static final String HEAP_MAX_MB = ".max.mb";
 
-    @Autowired
     public HeapMetricReader(MeterRegistry meterRegistry) {
         final MemoryMXBean memoryUsage = getMemoryUsage();
 
